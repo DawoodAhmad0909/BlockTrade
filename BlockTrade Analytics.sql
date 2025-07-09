@@ -149,7 +149,7 @@ GROUP BY DATE(t.timestamp), c.symbol
 ORDER BY trade_date DESC, c.symbol;
 
 SELECT 
-    c.symbol AS pair,
+    CONCAT(c.symbol,'/USD') AS pair,
     COUNT(*) AS total_transactions,
     ROUND(SUM(t.amount * t.price_per_unit), 2) AS total_volume_usd
 FROM transactions t
