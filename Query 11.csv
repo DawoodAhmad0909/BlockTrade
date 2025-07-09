@@ -1,5 +1,5 @@
-symbol,volume_24h,price_range,price_volatility
-BTC,66390.00,80.00000,32.998316
-ETH,5622.50,2.50000,1.25
-ADA,550.00,0.00000,0
-XRP,243.25,0.00000,0
+symbol,volume_24h,price_range,price_volatility,price_volatility
+BTC,66390.00,80.00000,32.998316,0.109423
+ETH,5622.50,2.50000,1.25,0.066711
+ADA,550.00,0.00000,0,0
+XRP,243.25,0.00000,0,0
