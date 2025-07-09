@@ -323,7 +323,8 @@ SELECT
     c.symbol,
     ROUND(SUM(t.amount * t.price_per_unit), 2) AS volume_24h,
     ROUND(MAX(t.price_per_unit) - MIN(t.price_per_unit), 6) AS price_range,
-    ROUND(STDDEV_POP(t.price_per_unit), 6) AS price_volatility
+    ROUND(STDDEV_POP(t.price_per_unit), 6) AS price_volatility,
+    ROUND(STDDEV(t.price_per_unit)*100.0/AVG(t.price_per_unit), 6) AS price_volatility
 FROM transactions t
 JOIN cryptocurrencies c ON t.crypto_id = c.crypto_id
 WHERE 
