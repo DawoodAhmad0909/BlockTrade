@@ -115,7 +115,8 @@ ORDER BY assets_traded DESC;
     
 SELECT 
     user_type,
-    ROUND(AVG(DATEDIFF(NOW(), registration_date)), 2) AS average_account_age_days
+    ROUND(AVG(DATEDIFF('2023-06-16', registration_date)), 2) AS average_account_age_days
+    -- '2023-06-16' Reference date,You can change it with NOW() To find data according current date
 FROM (
     SELECT 
         u.user_id,
@@ -290,7 +291,8 @@ WITH price_data AS (
     JOIN cryptocurrencies c ON t.crypto_id = c.crypto_id
     WHERE 
         t.status = 'completed'
-        AND t.timestamp >= NOW() - INTERVAL 1 DAY
+        AND t.timestamp >= '2023-06-16' - INTERVAL 1 DAY
+    -- '2023-06-16' Reference date,You can change it with NOW() To find data according current date
 )
 SELECT 
     symbol,
@@ -314,7 +316,8 @@ JOIN cryptocurrencies c ON t.crypto_id = c.crypto_id
 WHERE 
     t.status = 'completed'
     AND t.transaction_type IN ('buy', 'sell')
-    AND t.timestamp >= NOW() - INTERVAL 1 DAY
+    AND t.timestamp >= '2023-06-16' - INTERVAL 1 DAY
+    -- '2023-06-16' Reference date,You can change it with NOW() To find data according current date
 GROUP BY c.symbol
 ORDER BY volume_24h DESC;
 
@@ -337,7 +340,8 @@ FROM transactions t
 JOIN cryptocurrencies c ON t.crypto_id = c.crypto_id
 WHERE
     t.status = 'completed'
-    AND t.timestamp >= NOW() - INTERVAL 1 DAY
+    AND t.timestamp >= '2023-06-16' - INTERVAL 1 DAY
+    -- '2023-06-16' Reference date,You can change it with NOW() To find data according current date
     AND t.transaction_type IN ('buy', 'sell')
 GROUP BY c.symbol
 HAVING highest_bid IS NOT NULL AND lowest_ask IS NOT NULL
